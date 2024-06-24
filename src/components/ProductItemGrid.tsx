@@ -1,7 +1,20 @@
 import { Autocomplete, AutocompleteItem, Pagination } from "@nextui-org/react";
 import ProductItem from "./ProductItem";
+import { useProducts } from '../hooks/use-products';
+// import { ProductContext, Product, ProductProvider } from '../context/ProductContext';
+// import { useContext } from "react";
+
 
 export default function ProductItemGrid() {
+
+  // const { products } = useContext(ProductContext) || { products: [] };
+
+
+  const { products, loading, error } = useProducts();
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
+
 
   const filters = [
     { label: "Newest", value: "newest" },
@@ -55,18 +68,9 @@ export default function ProductItemGrid() {
 
 
       <div className="grid w-full grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-4">
-        <ProductItem />
-        <ProductItem />
-        <ProductItem />
-        <ProductItem />
-        <ProductItem />
-        <ProductItem />
-        <ProductItem />
-        <ProductItem />
-        <ProductItem />
-        <ProductItem />
-        <ProductItem />
-        <ProductItem />
+        {products.map(product => (
+          <ProductItem key={product.id} product={product} />
+        ))}
       </div>
 
       <div className="flex justify-center mt-6">

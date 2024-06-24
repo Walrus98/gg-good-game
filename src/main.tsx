@@ -1,17 +1,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { NextUIProvider } from '@nextui-org/react'
+import { BrowserRouter } from 'react-router-dom'
+
 import App from './App.tsx'
+import { Provider } from './provider.tsx'
 import './styles/global.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <NextUIProvider>
-    <App />
-
-      <main className="dark text-foreground bg-background">
+    <BrowserRouter>
+      <Provider>
         <App />
-      </main>
-    </NextUIProvider>
-  </React.StrictMode>,
+      </Provider>
+    </BrowserRouter>
+  </React.StrictMode >,
 )

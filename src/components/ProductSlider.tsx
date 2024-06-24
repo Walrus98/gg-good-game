@@ -3,14 +3,22 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ProductItem from "./ProductItem";
+import { useProducts } from '../hooks/use-products';
 
 export default function ProductSlider() {
+
+  const { products, loading, error } = useProducts();
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
+
+
   const settings = {
     dots: false,
     infinite: false,
     speed: 500,
     slidesToShow: 4,
-    slidesToScroll: 4,
+    slidesToScroll: 1,
     autoplay: false,
     autoplaySpeed: 3000,
   };
@@ -19,14 +27,14 @@ export default function ProductSlider() {
   return (
     <div className="py-4">
       <Slider {...settings}>
-        <ProductItem/>
-        <ProductItem/>
-        <ProductItem/>
-        <ProductItem/>        
-        <ProductItem/>
-        <ProductItem/>
-        <ProductItem/>
-        <ProductItem/>
+        {products.map(product => (
+          <ProductItem key={product.id} product={product} />
+        ))}
+        {products.map(product => (
+          <ProductItem key={product.id} product={product} />
+        ))}
+
+
       </Slider>
     </div>
   );

@@ -38,15 +38,13 @@ export default function Footer() {
 
 
   return (
-    <section className="flex justify-center mt-14 bg-content1 rounded-2xl">
-      <div className="grid grid-cols-4 gap-4 w-full max-w-screen-xl p-4">
-        <FooterLogo/>
-        {
-          footerLinks.map((footerLink, index) => (
-            <FooterLink key={index} {...footerLink} />
-          ))
-        }
-      </div>
-    </section>
+    <div className="w-full grid grid-cols-4 gap-4 max-w-screen-xl p-4">
+      <FooterLogo />
+      {
+        footerLinks.map((footerLink, index) => (
+          <FooterLink key={index} {...footerLink} />
+        ))
+      }
+    </div>
   );
 }

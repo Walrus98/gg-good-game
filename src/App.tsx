@@ -1,14 +1,15 @@
-import './App.css'
-import Product from './components/Product';
-import HomePage from './pages/HomePage';
-import LoginPage from './pages/LoginPage';
-import ProductPage from './pages/ProductPage'
+import { Route, Routes } from 'react-router-dom';
+
+import IndexPage from './pages/IndexPage';
 import ProductsPage from './pages/ProductsPage';
 
 function App() {
 
   return (
-    <ProductsPage/>
+    <Routes>
+      <Route element={<IndexPage />} path="/" />
+      <Route element={<ProductsPage />} path="giochi-di-carte" />
+    </Routes>
   )
 }
 

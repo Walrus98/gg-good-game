@@ -1,17 +1,14 @@
-import Navbar from "../components/Navbar";
-import ProductItemSection from "../components/ProductItemSection";
+import DefaultLayout from "../layouts/default";
 import ProductSection from "../components/ProductSection";
-import Footer from "../components/Footer";
+import ProductItemSection from "../components/ProductItemSection";
 
 
 export default function ProductPage() {
   return (
-    <>
-      <Navbar />
+    <DefaultLayout>
       <ProductSection />
       <ProductItemSection title={"Potrebbero piacerti anche"} />
       <ProductItemSection title={"Novità"} />
-      <Footer />
-    </>
+    </DefaultLayout>
   );
 }
