@@ -5,10 +5,6 @@ export const siteConfig = {
   description: "Make beautiful websites regardless of your design experience.",
   navItems: [
     {
-      label: "Home",
-      href: "/",
-    },
-    {
       label: "Giochi di Carte",
       href: "/giochi-di-carte",
     },

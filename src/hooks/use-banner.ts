@@ -1,17 +1,12 @@
 import { useState, useEffect } from 'react';
 
-export interface Product {
+export interface Banner {
   id: number;
-  name: string;
-  description: string;
-  longDescription: string;
-  price: number;
-  quantity: number;
   image: string;
 }
 
-export const useProducts = () => {
-  const [products, setProducts] = useState<Product[]>([]);
+export const useBanner = () => {
+  const [banners, setProducts] = useState<Banner[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -25,12 +20,7 @@ export const useProducts = () => {
         const data = await response.json();
         const extractedProducts = data.data.map((item: any) => ({
           id: item.id,
-          name: item.attributes.Name,
-          description: item.attributes.Description,
-          price: item.attributes.Price,
-          longDescription: item.attributes.LongDescription,
-          quantity: item.attributes.Quantity,
-          image: "http://localhost:1337" + item.attributes.Media.data[0].attributes.url,
+          image: "http://localhost:1337" + item.attributes.Media.data[0].attributes.formats.thumbnail.url,
         }));
         setProducts(extractedProducts);
         setLoading(false);
@@ -43,5 +33,5 @@ export const useProducts = () => {
     fetchProducts();
   }, []);
 
-  return { products, loading, error };
+  return { products: banners, loading, error };
 };

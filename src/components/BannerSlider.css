@@ -1,5 +1,5 @@
 .slick-dots li.slick-active button:before {
-    color: red;
+    color: hsl(var(--nextui-primary) / var(--nextui-primary-opacity, var(--tw-bg-opacity)));
 } 
 
 .slick-dots li button:before {

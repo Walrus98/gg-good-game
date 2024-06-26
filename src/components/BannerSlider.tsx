@@ -21,7 +21,7 @@ export default function BannerSlider() {
 
   return (
     <div className="flex justify-center">
-      <div className="w-full max-w-[1920px] p-8 rounded-large bg-content1">
+      <div className="w-full max-w-[1920px] p-8 rounded-large bg-content2">
       <Slider {...settings} >
       <div>
           <img src={bannerImage} alt="Banner 1" className="rounded-large w-full object-cover" />

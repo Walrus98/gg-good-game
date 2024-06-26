@@ -15,8 +15,8 @@ export default function ProductItem({ product }: { product: Product }) {
       </CardBody>
       <div className="flex flex-col gap-4 p-4 px-4">
         <div className="flex justify-between font-medium">
-          <h3 className="text-medium font-medium text-default-700">{product.name}</h3>
-          <p className="text-medium font-medium text-default-500">{product.price}</p>
+          <h3 className="text-medium font-medium text-default-700">{product.name.length > 24 ? product.name.substring(0, 22) + '...' : product.name}</h3>
+          <p className="text-medium font-medium text-default-500">{product.price}€</p>
         </div>
         <Button className="font-medium" color="primary">
           Add to cart

@@ -22,10 +22,18 @@ import {
   DiscordIcon,
   HeartFilledIcon,
   SearchIcon,
+  FacebookIcon,
 } from "./icons";
-import { Logo } from "./icons";
+import { Image } from "@nextui-org/image";
+import LightLogo from "../assets/images/gg-logo.png";
+import DarkLogo from "../assets/images/gg-logo-dark.png";
+import { useTheme } from "../hooks/use-theme";
+import {Dropdown, DropdownMenu, DropdownTrigger, DropdownItem } from "@nextui-org/react";
 
-export const Navbar = () => {
+export default function Navbar() {
+
+  const { isLight } = useTheme();
+
   const searchInput = (
     <Input
       aria-label="Search"
@@ -48,21 +56,35 @@ export const Navbar = () => {
   );
 
   return (
-    <NextUINavbar maxWidth="xl" position="sticky">
-      <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
-        <NavbarBrand className="gap-3 max-w-fit">
-          <Link
-            className="flex justify-start items-center gap-1"
-            color="foreground"
-            href="/"
-          >
-            <Logo />
-            <p className="font-bold text-inherit">ACME</p>
+    <NextUINavbar className="bg-background" maxWidth="xl" position="sticky">
+      <NavbarContent justify="start">
+        <NavbarBrand>
+          <Link color="foreground" href="/">
+            <Image className="max-w-[200px] rounded-none" alt="GG Logo" src={isLight ? LightLogo : DarkLogo} />
           </Link>
         </NavbarBrand>
-        <div className="hidden lg:flex gap-4 justify-start ml-2">
+      </NavbarContent>
+
+      <NavbarContent justify="center">
+        <div className="hidden lg:flex gap-4 ml-2">
           {siteConfig.navItems.map((item) => (
             <NavbarItem key={item.href}>
+
+              {/* <Dropdown>
+                <DropdownTrigger>
+                  <Button>Open Menu</Button>
+                </DropdownTrigger>
+                <DropdownMenu aria-label="Link Actions">
+                  <DropdownItem key="home" href="/home">
+                    Home
+                  </DropdownItem>
+                  <DropdownItem key="about" href="/about">
+                    About
+                  </DropdownItem>
+                </DropdownMenu>
+              </Dropdown> */}
+
+
               <Link
                 className={clsx(
                   linkStyles({ color: "foreground" }),
@@ -76,26 +98,25 @@ export const Navbar = () => {
             </NavbarItem>
           ))}
         </div>
+
       </NavbarContent>
 
-      <NavbarContent
-        className="hidden sm:flex basis-1/5 sm:basis-full"
-        justify="end"
-      >
+
+      <NavbarContent className="hidden sm:flex basis-1/5 sm:basis-full" justify="end" >
         <NavbarItem className="hidden sm:flex gap-2">
-          <Link isExternal href={siteConfig.links.twitter}>
+          {/* <Link isExternal href={siteConfig.links.twitter}>
             <TwitterIcon className="text-default-500" />
-          </Link>
+          </Link> */}
           <Link isExternal href={siteConfig.links.discord}>
             <DiscordIcon className="text-default-500" />
           </Link>
           <Link isExternal href={siteConfig.links.github}>
-            <GithubIcon className="text-default-500" />
+            <FacebookIcon className="text-default-500" />
           </Link>
           <ThemeSwitch />
         </NavbarItem>
-        <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
-        <NavbarItem className="hidden md:flex">
+        {/* <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem> */}
+        {/* <NavbarItem className="md:flex">
           <Button
             isExternal
             as={Link}
@@ -106,7 +127,7 @@ export const Navbar = () => {
           >
             Sponsor
           </Button>
-        </NavbarItem>
+        </NavbarItem> */}
       </NavbarContent>
 
       <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
