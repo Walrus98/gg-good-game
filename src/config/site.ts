@@ -1,16 +1,56 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: "Vite + NextUI",
+  name: "GG Good Game",
   description: "Make beautiful websites regardless of your design experience.",
   navItems: [
     {
       label: "Giochi di Carte",
       href: "/giochi-di-carte",
+      navItems: [
+        {
+          label: "Magic the Gathering",
+          href: "/magic-the-gathering",
+        },
+        {
+          label: "Yu-Gi-Oh!",
+          href: "/yu-gi-oh",
+        },
+        {
+          label: "Pokémon",
+          href: "/pokemon",
+        },
+        {
+          label: "Carte Singole",
+          href: "/carte-singole",
+        },
+        {
+          label: "Accessori",
+          href: "/cgt-accessori",
+        },
+      ]
+    },
+    {
+      label: "Manga",
+      href: "/manga",
     },
     {
       label: "Modellismo",
       href: "/modellismo",
+      navItems: [
+        {
+          label: "Wargames",
+          href: "/Wargames",
+        },
+        {
+          label: "Gunpla",
+          href: "/gunpla",
+        },
+        {
+          label: "Accessori",
+          href: "/wg-accessori",
+        },
+      ]
     },
     {
       label: "Commissioni",
@@ -19,6 +59,24 @@ export const siteConfig = {
     {
       label: "Gadget",
       href: "/gadget",
+      navItems: [
+        {
+          label: "Funko Pop",
+          href: "/funko-pop",
+        },
+        {
+          label: "Puzzle",
+          href: "/puzzle",
+        },
+        {
+          label: "Peluche",
+          href: "/peluche",
+        },
+        {
+          label: "Nerf",
+          href: "/nerf",
+        },
+      ]
     },
   ],
   navMenuItems: [

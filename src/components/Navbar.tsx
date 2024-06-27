@@ -23,12 +23,16 @@ import {
   HeartFilledIcon,
   SearchIcon,
   FacebookIcon,
+  CartIcon,
+  AccountIcon,
 } from "./icons";
 import { Image } from "@nextui-org/image";
 import LightLogo from "../assets/images/gg-logo.png";
 import DarkLogo from "../assets/images/gg-logo-dark.png";
 import { useTheme } from "../hooks/use-theme";
-import {Dropdown, DropdownMenu, DropdownTrigger, DropdownItem } from "@nextui-org/react";
+import { Dropdown, DropdownMenu, DropdownTrigger, DropdownItem } from "@nextui-org/react";
+import React from "react";
+import NavbarItemMenu from "./NavbarItemMenu";
 
 export default function Navbar() {
 
@@ -66,54 +70,96 @@ export default function Navbar() {
       </NavbarContent>
 
       <NavbarContent justify="center">
-        <div className="hidden lg:flex gap-4 ml-2">
-          {siteConfig.navItems.map((item) => (
-            <NavbarItem key={item.href}>
-
-              {/* <Dropdown>
-                <DropdownTrigger>
-                  <Button>Open Menu</Button>
-                </DropdownTrigger>
-                <DropdownMenu aria-label="Link Actions">
-                  <DropdownItem key="home" href="/home">
-                    Home
-                  </DropdownItem>
-                  <DropdownItem key="about" href="/about">
-                    About
-                  </DropdownItem>
-                </DropdownMenu>
-              </Dropdown> */}
-
-
-              <Link
-                className={clsx(
-                  linkStyles({ color: "foreground" }),
-                  "data-[active=true]:text-primary data-[active=true]:font-medium",
+        <div className="hidden lg:flex gap-4">
+          {siteConfig.navItems.map(
+            (item) => (
+              <NavbarItem key={item.href}>
+                {item.navItems ? (
+                  <NavbarItemMenu item={item} />
+                ) : (
+                  <Link
+                    className={clsx(
+                      linkStyles({ color: "foreground" }),
+                      "p-2 data-[active=true]:text-primary data-[active=true]:font-medium"
+                    )}
+                    color="foreground"
+                    href={item.href}
+                  >
+                    {item.label}
+                  </Link>
                 )}
-                color="foreground"
-                href={item.href}
-              >
-                {item.label}
-              </Link>
-            </NavbarItem>
-          ))}
+              </NavbarItem>
+            ))}
         </div>
-
       </NavbarContent>
 
+
+
+      {/* // {siteConfig.navItems.map((item) => (
+          //   item.navItems ? (
+          //     <Dropdown isOpen={isOpen} key={item.href}>
+          //       <DropdownTrigger>
+          //         <Button variant="bordered"
+          //           onMouseEnter={() => {
+          //             setIsOpen(true);
+          //           }}
+          //           onMouseLeave={() => {
+          //             setIsOpen(false);
+          //           }}>{item.label}
+          //         </Button>
+          //       </DropdownTrigger>
+          //       <DropdownMenu aria-label="Link Actions">
+          //         {item.navItems.map((subItem) => (
+          //           <DropdownItem key={subItem.label} href={subItem.href}>
+          //             {subItem.label}
+          //           </DropdownItem>
+          //         ))}
+          //       </DropdownMenu>
+          //     </Dropdown>
+          //   ) : (
+          //     <NavbarItem key={item.href}>
+          //       <Link
+          //         className={clsx(
+          //           linkStyles({ color: "foreground" }),
+          //           "data-[active=true]:text-primary data-[active=true]:font-medium",
+          //         )}
+          //         color="foreground"
+          //         href={item.href}
+          //       >
+          //         {item.label}
+          //       </Link>
+          //     </NavbarItem>
+          //   )
+          // ))}
+
+          // {siteConfig.navItems.map((item) => (
+          //   <NavbarItem key={item.href}>
+
+          //     <Link
+          //       className={clsx(
+          //         linkStyles({ color: "foreground" }),
+          //         "data-[active=true]:text-primary data-[active=true]:font-medium",
+          //       )}
+          //       color="foreground"
+          //       href={item.href}
+          //     >
+          //       {item.label}
+          //     </Link>
+          //   </NavbarItem>
+          // ))} */}
 
       <NavbarContent className="hidden sm:flex basis-1/5 sm:basis-full" justify="end" >
         <NavbarItem className="hidden sm:flex gap-2">
           {/* <Link isExternal href={siteConfig.links.twitter}>
             <TwitterIcon className="text-default-500" />
           </Link> */}
+          <ThemeSwitch className="mr-2" />
           <Link isExternal href={siteConfig.links.discord}>
-            <DiscordIcon className="text-default-500" />
+            <AccountIcon className="text-default-500" />
           </Link>
           <Link isExternal href={siteConfig.links.github}>
-            <FacebookIcon className="text-default-500" />
+            <CartIcon className="text-default-500" />
           </Link>
-          <ThemeSwitch />
         </NavbarItem>
         {/* <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem> */}
         {/* <NavbarItem className="md:flex">
