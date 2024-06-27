@@ -2,6 +2,10 @@
     color: hsl(var(--nextui-primary) / var(--nextui-primary-opacity, var(--tw-bg-opacity)));
 } 
 
+.slick-dots li.slick-active button:before {
+    opacity: 1;
+}
+
 .slick-dots li button:before {
     font-size: 8px;
 }
