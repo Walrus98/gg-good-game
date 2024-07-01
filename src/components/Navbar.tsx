@@ -33,6 +33,7 @@ import { useTheme } from "../hooks/use-theme";
 import { Dropdown, DropdownMenu, DropdownTrigger, DropdownItem } from "@nextui-org/react";
 import React from "react";
 import NavbarItemMenu from "./NavbarItemMenu";
+import SearchModal from "./SearchModal";
 
 export default function Navbar() {
 
@@ -160,6 +161,10 @@ export default function Navbar() {
           <Link isExternal href={siteConfig.links.github}>
             <CartIcon className="text-default-500" />
           </Link>
+          <Link isExternal href={siteConfig.links.discord}>
+            <SearchIcon className="text-default-500" />
+          </Link>
+          {/* <SearchModal/> */}
         </NavbarItem>
         {/* <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem> */}
         {/* <NavbarItem className="md:flex">

@@ -30,7 +30,7 @@ export default function NavbarItemMenu({ item }: any) {
                     {item.navItems.map((subItem: any) => (
                         <DropdownItem
                             key={subItem.label}
-                            href={subItem.href}>
+                            href={item.href + subItem.href}>
                             {subItem.label}
                         </DropdownItem>
                     ))}
